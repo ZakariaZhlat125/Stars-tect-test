@@ -53,12 +53,24 @@ function Header() {
   const { isLoading, data, error } = useMetaitonFetch(showData, "/user-info");
 
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     if (
       localStorage.getItem("token") !== null &&
       !["/login", "/register"].includes(location.pathname)
     ) {
       if (!isLoading && data) {
-        const responseData = data.data; 
+        const responseData = data.data;
         setUserData(responseData); // Save user data if authenticated
       }
     }
@@ -142,7 +154,7 @@ function Header() {
             >
               {userData ? (
                 <>
-                <MenuItem disabled>{userData.name}</MenuItem>
+                  <MenuItem disabled>{userData.name}</MenuItem>
                   <MenuItem
                     sx={{
                       borderBottom: "1px solid #ccc ",

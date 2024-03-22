@@ -13,6 +13,6 @@ class HouseSeeder extends Seeder
      */
     public function run(): void
     {
-        House::factory()->count(5)->create();
+        House::factory()->count(8)->create();
     }
 }
