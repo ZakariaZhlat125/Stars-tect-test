@@ -66,8 +66,8 @@ var settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  // autoplay: true,
-  autoplaySpeed: 1500,
+  autoplay: true,
+  autoplaySpeed: 1000,
 };
 
 const Cart = ({ item }) => {
